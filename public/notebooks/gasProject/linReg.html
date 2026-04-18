@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./../notebook.css">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Running Linear Regression</h1>
+    Now, after interpolation, looking at creating a linear model for interpolation and gas price prediction. <br>
+    <h3>Linear Regression Results With Yearly Data:</h3>
+    <h4>VIFs by Feature:</h4>
+    <table>
+  <thead>
+    <tr>
+      <th>variable</th>
+      <th>VIF</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Crude_Price</td>
+      <td>4.085654</td>
+    </tr>
+    <tr>
+      <td>Unemployment_Rate</td>
+      <td>1.327519</td>
+    </tr>
+    <tr>
+      <td>CPI</td>
+      <td>9.361792</td>
+    </tr>
+    <tr>
+      <td>Production</td>
+      <td>4.792672</td>
+    </tr>
+    <tr>
+      <td>const</td>
+      <td>60.392823</td>
+    </tr>
+  </tbody>
+</table>
+<h4>Linear Regression Metrics:</h4>
+<table>
+  <thead>
+    <tr>
+      <th>Metric</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>R²</td>
+      <td>0.9908</td>
+    </tr>
+    <tr>
+      <td>MSE</td>
+      <td>0.0073</td>
+    </tr>
+    <tr>
+      <td>MAE</td>
+      <td>0.0615</td>
+    </tr>
+    <tr>
+      <td>MAPE</td>
+      <td>2.4088%</td>
+    </tr>
+  </tbody>
+</table>
+<h4>Linear Regression Paramters/Results:</h4>
+<table>
+  <thead>
+    <tr>
+      <th>Variable</th>
+      <th>coef</th>
+      <th>std err</th>
+      <th>t</th>
+      <th>P&gt;|t|</th>
+      <th>[0.025</th>
+      <th>0.975]</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Crude_Price</td>
+      <td>1.1170</td>
+      <td>0.047</td>
+      <td>23.569</td>
+      <td>0.000</td>
+      <td>1.020</td>
+      <td>1.214</td>
+    </tr>
+    <tr>
+      <td>Unemployment_Rate</td>
+      <td>-0.0065</td>
+      <td>0.011</td>
+      <td>-0.588</td>
+      <td>0.561</td>
+      <td>-0.029</td>
+      <td>0.016</td>
+    </tr>
+    <tr>
+      <td>CPI</td>
+      <td>0.0033</td>
+      <td>0.001</td>
+      <td>3.488</td>
+      <td>0.002</td>
+      <td>0.001</td>
+      <td>0.005</td>
+    </tr>
+    <tr>
+      <td>Production</td>
+      <td>1.53e-05</td>
+      <td>1.29e-05</td>
+      <td>1.188</td>
+      <td>0.244</td>
+      <td>-1.1e-05</td>
+      <td>4.16e-05</td>
+    </tr>
+    <tr>
+      <td>const</td>
+      <td>0.0275</td>
+      <td>0.122</td>
+      <td>0.227</td>
+      <td>0.822</td>
+      <td>-0.221</td>
+      <td>0.276</td>
+    </tr>
+  </tbody>
+</table>
+<h3>Interpretting the Inital Linear Regression Results:</h3>
+The initial model shows pretty significant multicollinearity, which is clear given CPI's high variance inflation factor of 9.36. This means that the collinearity inflated the standard errors and might mask the actual input of the other variables in the OLS regression. <br>
+Becuase of this, I dropped CPI as a feature from the model, which will reduce the collinearity. <br>
+<h4>VIFs by Feature:</h4>
+<table>
+  <thead>
+    <tr>
+      <th>variable</th>
+      <th>VIF</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Crude_Price</td>
+      <td>1.119815</td>
+    </tr>
+    <tr>
+      <td>Unemployment_Rate</td>
+      <td>1.206041</td>
+    </tr>
+    <tr>
+      <td>Production</td>
+      <td>1.274051</td>
+    </tr>
+    <tr>
+      <td>const</td>
+      <td>30.616454</td>
+    </tr>
+  </tbody>
+</table>
+<h4>Linear Regression Metrics:</h4>
+<table>
+  <thead>
+    <tr>
+      <th>Metric</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>R²</td>
+      <td>0.9871</td>
+    </tr>
+    <tr>
+      <td>MSE</td>
+      <td>0.0103</td>
+    </tr>
+    <tr>
+      <td>MAE</td>
+      <td>0.0810</td>
+    </tr>
+    <tr>
+      <td>MAPE</td>
+      <td>3.6655%</td>
+    </tr>
+  </tbody>
+</table>
+<h4>Linear Regression Paramters/Results:</h4>
+<table>
+  <thead>
+    <tr>
+      <th>Variable</th>
+      <th>coef</th>
+      <th>std err</th>
+      <th>t</th>
+      <th>P&gt;|t|</th>
+      <th>[0.025</th>
+      <th>0.975]</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Crude_Price</td>
+      <td>1.2566</td>
+      <td>0.030</td>
+      <td>42.439</td>
+      <td>0.000</td>
+      <td>1.196</td>
+      <td>1.317</td>
+    </tr>
+    <tr>
+      <td>Unemployment_Rate</td>
+      <td>-0.0137</td>
+      <td>0.013</td>
+      <td>-1.084</td>
+      <td>0.287</td>
+      <td>-0.039</td>
+      <td>0.012</td>
+    </tr>
+    <tr>
+      <td>Production</td>
+      <td>5.331e-05</td>
+      <td>8.01e-06</td>
+      <td>6.653</td>
+      <td>0.000</td>
+      <td>3.7e-05</td>
+      <td>6.96e-05</td>
+    </tr>
+    <tr>
+      <td>const</td>
+      <td>0.3021</td>
+      <td>0.108</td>
+      <td>2.798</td>
+      <td>0.009</td>
+      <td>0.082</td>
+      <td>0.522</td>
+    </tr>
+  </tbody>
+</table>
+<h3>Interpretting the Final Linear Regression Results:</h3>
+After dropping CPI, the other remaining VIF values are below 1.4 and aren't problematic for collinearity in the model. <br>
+In this model, the standard error for Production dropped and shows that it is statistically significant along with Crude Price. <br>
+Dropping CPI did drop the \(R^2\) value, but this is intuitive given that CPI was highly collinear. <br>
+</body>
+</html>

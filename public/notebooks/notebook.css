@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,100..900;1,9..40,100..900&family=DM+Serif+Display:ital@0;1&family=DM+Serif+Text:ital@0;1&display=swap');
+
+:root {
+    /* Mirroring your main index.css dark mode theme */
+    --bg: #16171d;
+    --text: #9ca3af;
+    --text-h: #f3f4f6;
+    --border: #2e303a;
+    --code-bg: #1f2028;
+    
+    --sans: 'DM Sans', sans-serif;
+    --mono: 'DM Mono', monospace;
+}
+
+body, .container-fluid { 
+    background: var(--bg) !important;
+    color: var(--text) !important;
+    font-family: var(--sans) !important;
+    
+    /* Center the content and prevent it from getting too wide */
+    margin: 0 auto !important;
+    max-width: 900px !important;
+    
+    /* This adds the visual space on the left, right, top, and bottom */
+    padding: 32px 48px !important; 
+    box-sizing: border-box !important;
+}
+
+/* For mobile responsiveness */
+@media (max-width: 768px) {
+    body, .container-fluid {
+        padding: 24px 20px !important;
+    }
+}
+
+/* ─── Typography ──────────────────────────────────────── */
+.nb-markdown {
+    font-family: var(--sans);
+    font-weight: 300;
+    padding: 1rem 0;
+    line-height: 1.6;
+    color: var(--text);
+}
+
+h1, h2, h3, h4, h5 {
+    color: var(--text-h) !important;
+}
+
+ul {
+    font-family: var(--sans);
+    color: var(--text);
+    font-weight: 300;
+}
+
+.anchor-link {
+    visibility: hidden;
+}
+
+/* ─── Code Blocks ─────────────────────────────────────── */
+pre {
+    font-family: var(--mono) !important;
+    color: var(--text-h) !important;
+    background-color: var(--code-bg) !important;
+    border: 1px solid var(--border) !important;
+    font-size: 13px !important;
+    border-radius: 8px;
+    padding: 16px !important;
+    white-space: pre-wrap;
+    overflow-x: auto;
+}
+
+.nb-code {
+    display: inline-block;
+    width: 100%;
+}
+
+/* ─── Tables (Pandas DataFrames) ──────────────────────── */
+.notebook-embed div.output_area {
+    overflow-x: auto !important;
+    scrollbar-width: thin !important;
+    scrollbar-color: var(--border) transparent !important;
+}
+
+table {
+    border-collapse: collapse !important;
+    width: 100% !important;
+    font-family: var(--mono) !important;
+    margin: 16px 0 32px !important;
+    background: transparent !important;
+}
+
+thead tr {
+    border-bottom: 2px solid var(--border) !important;
+}
+
+table th {
+    color: var(--text-h) !important;
+    font-size: 11px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.1em !important;
+    text-transform: uppercase !important;
+    padding: 12px 24px 12px 0 !important;
+    text-align: left !important;
+}
+
+tbody tr {
+    border-bottom: 1px solid var(--border) !important;
+    transition: background 0.2s ease !important;
+}
+
+tbody tr:hover {
+    background: rgba(255, 255, 255, 0.03) !important;
+}
+
+tbody tr td {
+    padding: 12px 24px 12px 0 !important;
+    color: var(--text) !important;
+    font-size: 13px !important;
+}
+
+/* ─── Plots ───────────────────────────────────────────── */
+.nb-plot {
+    background-color: transparent !important; /* Makes dark-text charts readable */
+    border-radius: 8px;
+    padding: 16px;
+    margin: 16px 0;
+
+    max-width: 100% !important;
+    height: auto !important;
+
+    box-sizing: border-box !important;
+}

@@ -1,0 +1,134 @@
+/* ─── Resume Container ─────────────────────────────────────── */
+.resume-container {
+    max-width: 900px;
+    margin: 0 auto;
+    /* Changed from: padding: 24px 0 64px 0; */
+    padding: 48px 64px 96px; 
+    color: #9ca3af;
+    font-family: var(--sans, 'DM Sans', sans-serif);
+    animation: detailFadeIn 0.5s ease both;
+}
+
+/* Add this to keep it from getting too skinny on phones */
+@media (max-width: 768px) {
+    .resume-container {
+        padding: 32px 24px 64px; 
+    }
+}
+
+.resume-section {
+    margin-bottom: 56px;
+}
+
+/* ─── Typography & Headings ────────────────────────────────── */
+.section-title {
+    font-family: var(--serif-display, 'DM Serif Display', serif);
+    font-size: 28px;
+    font-weight: 400;
+    color: #f0ece4;
+    margin: 0 0 16px 0;
+    letter-spacing: -0.01em;
+}
+
+.resume-divider {
+    border: none;
+    border-top: 1px solid #222228;
+    margin: 0 0 24px 0;
+}
+
+/* ─── Text & Spacing ───────────────────────────────────────── */
+.resume-text-section {
+    font-size: 15.5px;
+    line-height: 1.75;
+    color: #bbb;
+}
+
+/* Highlights the bold items (Languages, Titles, etc.) */
+.resume-text-section b {
+    color: #e8e6e0;
+    font-weight: 500;
+}
+
+.resume-text-section i {
+    color: #9ca3af;
+}
+
+/* ─── Subtitles (Jobs & Projects) ──────────────────────────── */
+.section-subtitle {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-top: 32px;
+    margin-bottom: 12px;
+}
+
+/* Job Title / Project Name */
+.section-subtitle b:first-child {
+    font-size: 17px;
+    color: #f0ece4;
+}
+
+/* Dates (Right aligned) */
+.section-subtitle b:last-child {
+    font-family: var(--mono, 'DM Mono', monospace);
+    font-size: 13px;
+    color: #666;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+/* Mobile responsiveness for the subtitle flexbox */
+@media (max-width: 600px) {
+    .section-subtitle {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+}
+
+/* ─── Lists ────────────────────────────────────────────────── */
+.resume-list {
+    padding-left: 20px;
+    margin: 12px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.resume-list-item {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #bbb;
+}
+
+/* Coursework specific spacing */
+.coursework-container {
+    margin-top: 16px;
+}
+
+.coursework-list {
+    margin: 8px 0 0 0;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.coursework-list li {
+    font-size: 15px;
+    color: #bbb;
+}
+
+/* ─── Links ────────────────────────────────────────────────── */
+.resume-link {
+    color: #f0ece4;
+    text-decoration: none;
+    border-bottom: 1px solid #444;
+    transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.resume-link:hover {
+    color: #ffffff;
+    border-color: #ffffff;
+}

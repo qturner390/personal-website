@@ -1,0 +1,11 @@
+.contact-information {
+    display: flex;
+    justify-content: center;
+}
+
+.contact-list {
+    display: inline-block;
+    list-style-type: none;
+    text-align: center;
+    padding: 0;
+}

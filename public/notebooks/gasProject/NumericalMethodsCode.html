@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./../notebook.css">
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="nb-markdown">
+        For the sake of brevity, the following functions will be listed with their definition and documentation. The full code is present in the linked notebook. <br>
+            <h3>Lagrange Interpolation</h3>finds a unique polynomial of degree \(n - 1\) that passes through a given set of \(n\) data points. This polynomial is constructed by summing weighted Lagrangian basis polynomials. <br>
+            <b>Formula:</b> <br>
+            \[P(x)=\sum_{i=0}^ny_iL_i(x)\]
+            where:
+            \[L_i(x)=\prod_{j=0,j\neq i}^n\frac{x-x_j}{x_i-x_j}\]
+            Langrange Interpolation can be limited because high-degree interpolations can have very significant oscillations between data points, which means that it can be highly unreliable for extrapolation.
+            <pre><code>
+def lagrange_interpolation(x, y, x_extra=None, y_extra=None, n_plot=500, x_label='Independent variable', plot=True):
+    """
+    Perform Lagrange interpolation and plot results.
+
+    Parameters
+    ----------
+    x : array,
+        Independent variable values of data
+    y : array
+        Dependent variable values of data
+    x_extra, y_extra : array
+        Extra/background points to overlay
+        Helps with visualizing generalization of the interpolation
+    n_plot : int, default=500
+        Number of points to sample when drawing the interpolant curve.
+    x_label : str, default='Independent variable'
+        Label for the x-axis.
+    plot : bool, default=True
+        Whether to plot the results.
+    Returns poly, metrics
+    """                
+            </code></pre>
+            <h3>Newton's Divided Difference Interpolation</h3>
+            finds the same polynomial as Lagrange interpolation, but through a difference method. This method uses divided differences to calculate coefficients \(a_i\) for the polynomial
+            \[P(x)=f[x_0]+\sum_{i=0}^nf[x_0,\dots,x_i]\prod_{j=0}^{i-1}(x-x_j)\]
+            where
+            \[a_0=f[x_0], a_1=f[x_0,x_1],\dots, a_n=f[x_0,x_1,\dots,x_n]\]
+            where \(f[x_i]\) is a divided difference. Some examples of divided differences are:
+            \[f[x_i]=y_i\]
+            \[f[x_i, x_{i+1}=\frac{f[x_{i+1}] - f[x_i]}{x_{i + 1} - x_i}\]
+            \[f[x_i, x_{i + 1}, \dots, x_{i + k}] = \frac{f[x_{i + 1},\dots,x_{i + k}] - f[x_i,\dots,x_{i + k - 1}]}{x_{i + k} - x_i}\]
+            Because this generates the same polynomial as Lagrange interpolation, 
+            <pre><code>
+newton_interpolation = lagrange_interpolation                
+            </code></pre>
+            <h3>Cubic Spline Interpolation</h3>
+            constructs a smooth piecewise cubic polynomail function \(S(x)\). \(S(x)\) passes through a set of points and ensures continuity of the function, the first derivative of the function, and the second derivative of the function at each interior "knot".
+            <br> \(S(x)\) consists of \(n-1\) cubic polynomials given \(n\) points. Each separate cubic polynomial is of the form:
+            \[S_i(x)=a_i+b_i(x-x_i)+c(x-x_i)^2+d_i(x-x_i)^3\]
+            To create these cubic polynomials, a tridiagonal linear system is solved to find the coefficients. <br>
+            Using a cubic spline can be better because it reduces the risk of oscillation and makes the interpolation smoother overall.
+            <pre><code>
+def spline_interpolation(x, y, x_extra=None, y_extra=None, n_plot=500, x_label='Independent variable', plot=True):
+    """
+    Perform cubic spline interpolation and plot results.
+
+    Parameters
+    ----------
+    x : array,
+        Independent variable values of data
+    y : array
+        Dependent variable values of data
+    x_extra, y_extra : array
+        Extra/background points to overlay
+        Helps with visualizing generalization of the interpolation
+    n_plot : int, default=500
+        Number of points to sample when drawing the interpolant curve.
+    x_label : str, default='Independent variable'
+        Label for the x-axis.
+    plot : bool, default=True
+        Whether to plot the results.
+    Returns cs, metrics
+    """                
+            </code></pre>
+            <h3>Hermite Interpolation</h3> is similar to cubic spline interpolation, but instead of having conitnuity up to the second derivative, it only has continuity up to the first derivative. <br>
+            The goal is to find a polynomial \(H(x)\) of the lowest degree that is continuous and the first derivative is continuous. The calculation involves using either the Lagrange Basis polynomials \(L_i(x)\) or the divided differences method from earlier. Using the Lagrange basis polynomials, the polynomial can be constructed like:
+            \[H(x)=\sum_{i=0}^nf(x_i)h_i(x)+\sum_{i=0}^nf'(x_i)\hat{h}_i(x)\]
+            Hermite Interpolation is less smooth than Cubic Spline interpolation, which has the potential to introduce more wiggles in the function. <br>
+            Usually, it makes sense to choose Hermite Interpolation when preserving monotonicity, preventing overshooting, or when local control is more important than the overall smoothness of the function. <br>
+            <pre><code>
+def hermite_interpolation(x, y, x_extra=None, y_extra=None, n_plot=500, x_label='Independent variable', plot=True):
+    """
+    Perform Hermite interpolation and plot results.
+
+    Parameters
+    ----------
+    x : array,
+        Independent variable values of data
+    y : array
+        Dependent variable values of data
+    x_extra, y_extra : array
+        Extra/background points to overlay
+        Helps with visualizing generalization of the interpolation
+    n_plot : int, default=500
+        Number of points to sample when drawing the interpolant curve.
+    x_label : str, default='Independent variable'
+        Label for the x-axis.
+    plot : bool, default=True
+        Whether to plot the results.
+    Returns herm, metrics
+    """                
+            </code></pre>
+            <h3>Picking Interpolation Points</h3> <br>
+            Another important variable to consider when interpolating the data is picking the right points to use for interpolation. For this project, I was experimenting with the following methods of picking points:
+            <h4>Random</h4>
+            <ul>
+                <li>This method will usually suck and will usually be the worst of the three and will serve as a good baseline</li>
+            </ul>
+            <h4>Equally-Spaced</h4>
+            <ul>
+                <li>Models based on observational data coming in at discrete time scales might require this method to be used.</li>
+                <li>It is simple to calculate and a straightforward sampling method to understand.</li>
+                <li>It is prone to oscillations and instability</li>
+            </ul>
+            <h4>Chebyshev</h4>
+            <ul>
+                <li>The gold standard for polynomial interpolation, so I expected this to perform the best.</li>
+                <li>Mathematically, on the interval \([-1,1]\) the points are defined as:</li>
+\[x_i=\cos\big{(}\frac{2i+1}{2n+2}\pi\big{)}\]
+                <li>This method minimizes the maximum error. This is because the spacing of the points creates greater clustering at the edges of the interval and can prevent oscillation.</li>
+                <li>However, since the datapoints being used are discrete, this method can't be used directly so this will make the method slighlty less reliable.</li>
+            </ul>
+            <pre><code>
+def get_sample_indices(x, n, method='random', seed=None):
+    """
+    Gets indicies from x that correspond to a type of sampling.
+
+    Parameters
+    ----------
+    x : array
+        Independent variable values of data
+    n : int
+        Number of samples to select
+    method : str ('random', 'equally', or 'chebyshev')
+        Determines the sampling method
+    seed : int, default=None
+        Seed for reproducibility
+    Returns array
+    """
+            </code></pre>
+
+    <h2>Here is a table of the best methods based on MSE</h2>
+    *Using Chebyshev Nodes
+
+    </div>
+    <table>
+  <thead>
+    <tr>
+      <th>feature</th>
+      <th>lagrange_newton_n</th>
+      <th>lagrange_newton_mse</th>
+      <th>spline_n</th>
+      <th>spline_mse</th>
+      <th>hermite_n</th>
+      <th>hermite_mse</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Crude_Price</td>
+      <td>5</td>
+      <td>6.194290e-01</td>
+      <td>7</td>
+      <td>0.270847</td>
+      <td>7</td>
+      <td>0.076667</td>
+    </tr>
+    <tr>
+      <td>Unemployment_Rate</td>
+      <td>5</td>
+      <td>1.234417e+06</td>
+      <td>5</td>
+      <td>7081.397097</td>
+      <td>5</td>
+      <td>206.993120</td>
+    </tr>
+    <tr>
+      <td>CPI</td>
+      <td>9</td>
+      <td>1.832928e-01</td>
+      <td>11</td>
+      <td>0.130937</td>
+      <td>11</td>
+      <td>0.134286</td>
+    </tr>
+    <tr>
+      <td>Production</td>
+      <td>5</td>
+      <td>7.752062e-01</td>
+      <td>5</td>
+      <td>0.810590</td>
+      <td>11</td>
+      <td>0.694378</td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./../notebook.css">
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <h1>Linear Regression Insights</h1>
+    <h3>Metrics:</h3>
+    <ul>
+        <li><b>\(R^2\) (0.9871):</b> This means that 98.7% of the variance in gas prices can be directly explained by using changes in crude oil price, unemployment rate, and production. This means the model is highly predictive.</li>
+        <li><b>MSE (0.0103) and MAE (0.0810):</b>The model's predictions are off by 8.1 cents on average.</li>
+        <li><b>MAPE (3.6655%):</b>Predictions deviate from the real values by less than 4% on average.</li>
+    </ul>
+    <h3>Individual Feature Contributions:</h3>
+    <ul>
+        <li>
+            <h4>Crude Oil Price (coef: 1.2566, p-value: ~0)</h4>
+            <ul>
+                <li>This is the most predictive feature of the model and the p-value suggests that this relationship is almost certainly not due to random chance. This makes sense since crude oil prices have a direct relationship with gas prices.</li>
+                <li>This feature also has a strong positive relationship with gas prices. For every dollar increase in crude oil price, retail gas prices rise by roughly $1.25.</li>
+            </ul>
+            <h4>Production (coef: 0.00005, p-value: ~0)</h4>
+            <ul>
+                <li>This feature is highly statistically significant because of the low p-value, which means that it consistency impacts retail gas prices.</li>
+                <li>Since Production is measured in thousands of gallons per day and millions of gallons are produced per day, this will mean the data is usually in the thousands or tens of thousands. This also explains why the coefficient for the feature is so low.</li>
+                <li>This means that retail gas prices raise by about 5 thousanths of a cent for every thousand gallons produced.</li>
+            </ul>
+            <h4>Unemployment Rate (coef: -0.0137, p-value: 0.287)</h4>
+            <ul>
+                <li>This feature is not statistically significant becuase the p-value is larger than 0.05. This means that the impact on gas prices is not direct</li>
+                <li>This feature also has a strong positive relationship with gas prices. For every dollar increase in crude oil price, retail gas prices rise by roughly $1.25.</li>
+            </ul>
+        </li>
+    </ul>
+</body>
+</html>
