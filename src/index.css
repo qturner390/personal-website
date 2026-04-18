@@ -7,6 +7,7 @@
   --font-serif-text: 'DM Serif Text', serif;
 
   --bg-base: #0d0d0f; /* Deepest background */
+  --bg-secondary: #10101a;
   --bg-surface: #16161a; /* Card background */
   --border-subtle: #2a2a2e; /* Dividers, outlines */
 
@@ -28,11 +29,12 @@
 }
 
 [data-theme='light'] {
-  --bg-base: #f4f4f5;
+  --bg-base: #f7f0df;
+  --bg-secondary: #e0ddc7;
   --bg-surface: #ffffff;
   --border-subtle: #e4e4e7;
 
-  --text-main: #18181b;
+  --text-main: #2b2b30;
   --text-muted: #52525b;
   --accent: #27272a;
 }

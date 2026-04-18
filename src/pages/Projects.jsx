@@ -46,7 +46,8 @@ const ProjectCard = ({ project, index, onClick }) => {
     >
       <div
         className="card-thumbnail"
-        style={{'--thumb': project.thumbnail ? `url(${project.thumbnail})` : `linear-gradient(135deg, #7301ff 0%, #820360 40%, #045d3c 100%)`}}
+        style={{'--thumb': project.thumbnail ? `url(${project.thumbnail})` 
+        : (project.gradient || `linear-gradient(135deg, #7301ff 0%, #820360 40%, #045d3c 100%)`)}}
       >
         <h2 className="card-clipped-title">{project.title}</h2>
       </div>

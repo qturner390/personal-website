@@ -10,7 +10,7 @@ export const projects = [
     type: "notebook+paper",
     notebookUrl: "https://colab.research.google.com/drive/1dsUnj9vsO3lYZ0zK1Mys9-PXPc2mVTI_#scrollTo=zUYHz7sm13SJ",
     paperUrl: "/papers/WildfireUnemploymentFinalReport.pdf",
-    thumbnail: "/thumbnails/wildfire.jpeg",
+    gradient: "linear-gradient(135deg, #ff4101 0%, #cb2222 40%, #ec9128 100%)",
     sections: [
         { type: 'commentary', label: 'Overview', text: 'The goal of this project was to explore the relationship between wildfires and unemployment rates in the United States across various time and spatial scales. This was a collaborative research project completed alongside Charlotte Hauke and Sierra Reschke for Data Mining at CU Boulder.'},
         { type: 'paper', label: 'Final Report', url: '/papers/WildfireUnemploymentFinalReport.pdf', commentary: 'Our complete report explaining our data collection, cleaning, exploratory data analysis, and model evaluation.'},
@@ -24,6 +24,7 @@ export const projects = [
     type: "notebook+youtube",
     notebookUrl: "https://SOMEHTING.com",
     youtubeId: "Gwsr-TNnUd8",
+    gradient: "linear-gradient(135deg, #7301ff 0%, #820360 40%, #045d3c 100%)",
     sections: [
         { type: 'commentary', label: 'Project Goal', text: 'The goal of this project is to accurately interpolate and model gas prices and to build a predictive model for retail gas prices. This project is useful for being able to handle missing data across various time scales or looking at predicting future gas prices.'},
         { type: 'commentary', label: 'EDA', text: 'First, I did EDA to understand the data I\'m working with and to get some insight into how the features interact.'},
