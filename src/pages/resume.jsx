@@ -12,16 +12,16 @@ const Resume = () => {
             <hr className='resume-divider'/>
             <section className='resume-text-section'>
                 <div className="section-subtitle">
-                    <b>University of Colorado Boulder | Boulder, CO</b>
+                    <b>University of Colorado Boulder | Boulder, CO</b><br />
                     <b>August 2022 - May 2026</b>
                 </div>
                 <i>B.S. in Computer Science | Minors: Business, Mathematics</i><br />
                 <div className="coursework-container">
                     <b>Relevant Coursework:</b>
                     <ul className='coursework-list'>
-                    <li><b>CS:</b> Machine Learning, Data Mining, Algorithms, Data Structures, Software Development, Computer Systems</li>
-                    <li><b>Mathematics:</b> Probability Theory, Numerical Analysis, Calculus I-III, Linear Algebra</li>
-                    <li><b>Business:</b>Business and Financial Analytics I-II, Entrepreneurship and Innovation, Finance</li>
+                    <li className='coursework-item'><b>CS:</b> Machine Learning, Data Mining, Algorithms, Data Structures, Software Development, Computer Systems</li>
+                    <li className='coursework-item'><b>Mathematics:</b> Probability Theory, Numerical Analysis, Calculus I-III, Linear Algebra</li>
+                    <li className='coursework-item'><b>Business:</b> Business and Financial Analytics I-II, Entrepreneurship and Innovation, Finance</li>
                 </ul>
                 </div>
             </section>
@@ -31,10 +31,12 @@ const Resume = () => {
             <h1 className='section-title'>Technical Skills</h1>
             <hr />
             <section className='resume-text-section'>
-                <b>Languages:</b> Python, C++, C, SQL, JavaScript (React, Node.js), Bash/Zsh <br />
-                <b>ML & Data Science:</b> PyTorch, Scikit-Learn, Pandas, SciPy, statsmodels, NLP, LLM Fine-Tuning, OLS Regression, Z-score Standardization <br />
-                <b>Robotics & Systems:</b> Webots, A* Search Algorithms, Behavior Trees, Computer Vision <br />
-                <b>Tools & Architecture:</b> AWS, Git, LangChain, Virtual Environments (venv), Jupyter
+                <ul className="skill-list">
+                    <li className="skill-item"><b>Languages:</b> Python, C++, C, SQL, JavaScript (React, Node.js), Bash/Zsh</li>
+                    <li className="skill-item"><b>ML & Data Science:</b> PyTorch, Scikit-Learn, Pandas, SciPy, statsmodels, NLP, LLM Fine-Tuning, OLS Regression, Z-score Standardization</li>
+                    <li className="skill-item"><b>Robotics & Systems:</b> Webots, A* Search Algorithms, Behavior Trees, Computer Vision</li>
+                    <li className="skill-item"><b>Tools & Architecture:</b> AWS, Git, LangChain, Virtual Environments (venv), Jupyter</li>
+                </ul>
             </section>
         </div>
 
@@ -43,7 +45,7 @@ const Resume = () => {
             <hr />
             <section className='resume-text-section'>
                 <div className="section-subtitle">
-                    <b>Data Annotation | Remote</b>
+                    <b>Data Annotation | Remote</b><br />
                     <b>October 2023 - Present</b>
                 </div>
                 <i>AI Trainer & Consultant</i>
@@ -60,7 +62,7 @@ const Resume = () => {
             <section className='resume-text-section'>
                 
                 <div className="section-subtitle">
-                    <b>Agentic System for Front-End Development | Python, LangChain, React, AWS</b>
+                    <b>Agentic System for Front-End Development | Python, LangChain, React, AWS</b> <br />
                     <b>Spring 2025</b>
                 </div>
                 <ul className="resume-list">
@@ -70,7 +72,7 @@ const Resume = () => {
 
                 <div className="section-subtitle">
                     {/* Example of linking directly to a hosted interactive notebook on your site */}
-                    <b><a href="/notebooks/GasProject.html" target="_blank" rel="noopener noreferrer" className="resume-link">Interpolation of Gas Prices</a> | Python, SciPy, statsmodels</b>
+                    <b><a href="/notebooks/GasProject.html" target="_blank" rel="noopener noreferrer" className="resume-link">Interpolation of Gas Prices</a> | Python, SciPy, statsmodels</b> <br />
                     <b>Spring 2025</b>
                 </div>
                 <ul className="resume-list">
@@ -80,7 +82,7 @@ const Resume = () => {
                 </ul>
 
                 <div className="section-subtitle">
-                    <b>Wildfire Impact on Unemployment | Python, Scikit-Learn, Pandas</b>
+                    <b>Wildfire Impact on Unemployment | Python, Scikit-Learn, Pandas</b> <br />
                     <b>Spring 2024</b>
                 </div>
                 <ul className="resume-list">

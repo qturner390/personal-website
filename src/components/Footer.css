@@ -1,0 +1,13 @@
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 4rem;
+    position: relative;
+    top: 0;
+    z-index: -1;
+    border-bottom: 1px solid var(--border-subtle, #222);
+    background: var(--bg-base);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
