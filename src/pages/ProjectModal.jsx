@@ -79,10 +79,6 @@ const ModalContent = ({ project }) => {
 
 const NotebookPaperView = ({ project }) => (
   <div className="modal-split">
-    <div className="modal-embed-wrapper">
-      <p className="embed-label">Notebook Preview</p>
-      <iframe src={project.notebookUrl} title="Notebook" className="modal-iframe" allowFullScreen />
-    </div>
     {project.paperUrl && (
       <div className="modal-side-card">
         <p className="embed-label">Research Paper</p>
@@ -100,10 +96,6 @@ const NotebookPaperView = ({ project }) => (
 
 const NotebookYouTubeView = ({ project }) => (
   <div className="modal-split">
-    <div className="modal-embed-wrapper">
-      <p className="embed-label">Notebook Preview</p>
-      <iframe src={project.notebookUrl} title="Notebook" className="modal-iframe" allowFullScreen />
-    </div>
     {project.youtubeId && (
       <div className="modal-embed-wrapper">
         <p className="embed-label">Demo Video</p>
@@ -155,7 +147,6 @@ const GithubView = ({ project }) => (
 const ModalLinks = ({ project }) => {
   const links = [
     project.githubUrl   && { label: 'GitHub',   href: project.githubUrl },
-    project.notebookUrl && { label: 'Notebook', href: project.notebookUrl },
     project.paperUrl    && { label: 'Paper',    href: project.paperUrl },
     project.youtubeId   && { label: 'YouTube',  href: `https://youtube.com/watch?v=${project.youtubeId}` },
   ].filter(Boolean);

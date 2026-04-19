@@ -32,3 +32,20 @@ li {
 .skill-item {
     padding-left: 0rem;
 }
+
+.title-holder {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.button-link {
+    background-color: var(--bg-base);
+    margin: 0.5rem;
+    padding: 0.2rem 1rem;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.button-link:hover {
+    background-color: var(--bg-surface);
+}

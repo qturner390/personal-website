@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Resume.css'
 import Contact from '../components/Contact.jsx'
 
@@ -57,7 +58,10 @@ const Resume = () => {
         </div>
 
         <div className='resume-section'>
-            <h1 className='section-title'>Projects</h1>
+            <div className='title-holder'>
+                <h1 className='section-title'>Projects</h1> 
+                <Link to="/Projects" className='button-link'>View Projects</Link>
+            </div>
             <hr />
             <section className='resume-text-section'>
                 
@@ -72,7 +76,7 @@ const Resume = () => {
 
                 <div className="section-subtitle">
                     {/* Example of linking directly to a hosted interactive notebook on your site */}
-                    <b><a href="/notebooks/GasProject.html" target="_blank" rel="noopener noreferrer" className="resume-link">Interpolation of Gas Prices</a> | Python, SciPy, statsmodels</b> <br />
+                    <b><Link to="/Projects/2" className='project-button'>Interpolation of Gas Prices</Link> | Python, SciPy, statsmodels</b> <br />
                     <b>Spring 2025</b>
                 </div>
                 <ul className="resume-list">
@@ -82,7 +86,7 @@ const Resume = () => {
                 </ul>
 
                 <div className="section-subtitle">
-                    <b>Wildfire Impact on Unemployment | Python, Scikit-Learn, Pandas</b> <br />
+                    <b><Link to="/Projects/1">Effects of Wildfires on Unemployment</Link> | Python, Scikit-Learn, Pandas</b> <br />
                     <b>Spring 2024</b>
                 </div>
                 <ul className="resume-list">
