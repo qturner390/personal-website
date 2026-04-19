@@ -1,6 +1,6 @@
 import React from 'react';
 import './Resume.css'
-import Contact from './../components/Contact.jsx'
+import Contact from '../components/Contact.jsx'
 
 const Resume = () => {
     return(
@@ -92,7 +92,7 @@ const Resume = () => {
                 </ul>
 
                 <div className="section-subtitle">
-                    <b>Amazon Review NLP Classifier | Python, PyTorch, Transformers</b>
+                    <b>Amazon Review NLP Classifier | Python, PyTorch, Transformers</b><br />
                     <b>Spring 2026</b>
                 </div>
                 <ul className="resume-list">
@@ -101,16 +101,7 @@ const Resume = () => {
                 </ul>
 
                 <div className="section-subtitle">
-                    <b>Quantitative Pairs Trading Engine | Python, Pandas, statsmodels</b>
-                    <b>Spring 2026</b>
-                </div>
-                <ul className="resume-list">
-                    <li className="resume-list-item">Developed a statistical arbitrage trading system to identify and capitalize on mean-reverting asset pairs.</li>
-                    <li className="resume-list-item">Utilized OLS regression to calculate dynamic hedge ratios and applied Z-score standardization across price spreads to programmatically generate trading signals.</li>
-                </ul>
-
-                <div className="section-subtitle">
-                    <b>Autonomous Robotics Simulation | Webots, C++, ROS</b>
+                    <b>Autonomous Robotics Simulation | Webots, C++, ROS</b> <br />
                     <b>Winter 2025</b>
                 </div>
                 <ul className="resume-list">

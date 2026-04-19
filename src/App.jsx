@@ -3,7 +3,7 @@ import React from 'react'
 import { useState } from 'react'
 import './App.css'
 
-import Resume from './pages/resume'
+import Resume from './pages/Resume'
 import Home from './pages/Home'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
@@ -22,6 +22,7 @@ function App() {
           <Route path="/" element = {<Home/>}/>
           <Route path="/home" element = {<Home/>}/>
           <Route path="/resume" element={<Resume/>}/>
+          <Route path="/contact" element={<Resume/>}/>
           <Route path="/projects" element={<Projects projects={projectsData}/>}/>
           <Route path="/projects/:id" element={<ProjectDetail/>}/>
         </Routes>

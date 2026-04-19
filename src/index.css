@@ -21,11 +21,19 @@
   --space-lg: clamp(3rem, 5vw, 5rem); /* Spacing between major sections */
 }
 
+html, body, #root {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  position: relative;
+
+  overflow-x: clip;
+}
+
 #root {
   display: flex;
   flex-direction: column;
   width: 100%;
-  overflow-x: hidden;
   position: relative;
   min-height: 100vh;
 }
@@ -51,7 +59,6 @@
 }
 
 html, body {
-  overflow-x: hidden;
   width: 100%;
   position: relative;
   margin: 0;
@@ -61,6 +68,7 @@ html, body {
 body {
   background-color: var(--bg-base);
   color: var(--text-muted);
+  font-family: var(--font-sans);
   transition: background-color 0.3s ease, color 0.3s ease;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;

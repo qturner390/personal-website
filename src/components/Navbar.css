@@ -7,12 +7,23 @@
 
     padding: 1.5rem 3rem;
 
-    min-height: 80px;
+    min-height: 40px;
+
+    position: sticky;
+    z-index: 1000;
+    top: 0;
+
+    background-color: var(--bg-surface);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    border-bottom: 1px solid var(--border-subtle);
 }
 
 .navbar-left {
     display: flex;
     justify-content: flex-start;
+    padding-bottom: 1rem;
 }
 
 .navbar-right {
@@ -43,7 +54,7 @@
     justify-content: center;
     align-items: center;
     transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    padding: 2rem;
+    padding: 0rem;
     box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
 
     z-index: 1000;
@@ -64,18 +75,37 @@
     text-decoration: none;
     font-size: 1rem;
     transition: color 0.2s ease;
+    position: relative;
 }
 
-.nav-link:hover {
-    color: var(--text-main, #fff)
+.nav-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px; /* Keeps it very sleek */
+    background-color: var(--text-main, #fff);
+    
+    /* Start scaled down to 0 */
+    transform: scaleX(0);
+    transform-origin: right;
+    
+    /* Matches your existing menu animation timing */
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
 }
 
 .theme-toggle-button {
     font-family: var(--font-mono, 'DM Mono', monospace);
     color: var(--text-muted);
     border: none;
-    background: var(--bg-base);
-    padding: 0;
+    background: var(--bg-surface);
+    padding: 0rem;
 }
 
 .mobile-toggle {
@@ -93,8 +123,14 @@
 .desktop-theme-btn {
     display: block;
     margin: 0;
-    padding: 0;
     cursor: pointer;
+    padding-bottom: 0.5rem;
+}
+
+.nav-item:not(.mobile-theme-item) {
+    padding: 0;
+    margin: 0;
+    display: flex;
 }
 
 /* --- Desktop Armor (Strictly for screens wider than 768px) --- */
@@ -113,7 +149,6 @@
         
         /* Overrides the right: -100% from leaking */
         transform: none; 
-        padding-bottom: 1.5rem;
     }
     
     /* Ensures the menu is always visible on desktop regardless of state */

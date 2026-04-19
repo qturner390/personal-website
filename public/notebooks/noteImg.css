@@ -139,20 +139,30 @@ tbody tr td {
 }
 
 /* ─── Plots & Images (LOCKED TO LIGHT MODE) ───────────── */
-.nb-plot, img {
-    /* Hardcode a light background so the black chart text is always visible */
+html body img,
+html body .nb-plot,
+html body div.output_area img {
+    /* Forces the 'glass window' to become solid white paper */
     background-color: #ffffff !important; 
     
-    /* Give it a subtle border so it doesn't bleed into light mode backgrounds */
     border: 1px solid #e4e4e7 !important; 
+    border-radius: 8px !important;
+    padding: 1rem !important;
+    margin: 1.5rem auto !important;
     
-    border-radius: 8px;
-    padding: 1rem;
-    margin: 1.5rem auto;
-    max-width: 100%;
-    height: auto;
-    display: block;
-    box-sizing: border-box;
+    /* Forces it to shrink on small screens instead of scrolling */
+    max-width: 100% !important; 
+    height: auto !important;
+    
+    display: block !important;
+    box-sizing: border-box !important;
+    
+    /* Strips any dark-mode filters */
+    filter: none !important; 
+    -webkit-filter: none !important;
+}
 
-    filter: none !important;
+img {
+    width: 100% !important;
+    background-color: #ffffff !important;
 }
