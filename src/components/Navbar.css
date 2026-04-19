@@ -16,7 +16,10 @@
 }
 
 .navbar-right {
-    display: block;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100%;
 }
 
 .navbar-name {
@@ -72,6 +75,7 @@
     color: var(--text-muted);
     border: none;
     background: var(--bg-base);
+    padding: 0;
 }
 
 .mobile-toggle {
@@ -86,7 +90,45 @@
     display: none;
 }
 
-@media (max-width: 768px) {
+.desktop-theme-btn {
+    display: block;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+}
+
+/* --- Desktop Armor (Strictly for screens wider than 768px) --- */
+@media (min-width: calc(769px)) {
+    .navbar-center {
+        display: flex;
+        justify-content: center;
+        
+        /* Forces it back into the grid layout on desktop */
+        position: static; 
+        width: auto;
+        height: auto;
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        
+        /* Overrides the right: -100% from leaking */
+        transform: none; 
+        padding-bottom: 1.5rem;
+    }
+    
+    /* Ensures the menu is always visible on desktop regardless of state */
+    .navbar-center, .navbar-center.mobile-active {
+        right: auto;
+    }
+    
+    /* Ensures links flow horizontally on desktop */
+    .nav-list {
+        flex-direction: row;
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: calc(768px)) {
     .navbar {
         display: flex;
         justify-content: space-between;
