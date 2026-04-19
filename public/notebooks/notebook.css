@@ -1,70 +1,82 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,100..900;1,9..40,100..900&family=DM+Serif+Display:ital@0;1&family=DM+Serif+Text:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap');
 
+/* 1. Default Dark Mode Variables */
 :root {
-    /* Mirroring your main index.css dark mode theme */
-    --bg: #16171d;
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --border: #2e303a;
-    --code-bg: #1f2028;
+    --bg-base: #0d0d0f;       
+    --bg-surface: #16161a;    
+    --border-subtle: #2a2a2e; 
     
-    --sans: 'DM Sans', sans-serif;
-    --mono: 'DM Mono', monospace;
+    --text-main: #f0ece4;     
+    --text-muted: #9ca3af;    
+    --accent: #e8e6e0;        
+
+    --font-sans: 'Outfit', sans-serif;
+    --font-mono: 'DM Mono', monospace;
+    --font-serif: 'DM Serif Display', serif;
 }
 
+/* 2. Light Mode Variables (The iframe will switch to these when toggled) */
+[data-theme='light'] {
+    --bg-base: #f4f4f5;       
+    --bg-surface: #ffffff;    
+    --border-subtle: #e4e4e7; 
+    
+    --text-main: #18181b;     
+    --text-muted: #52525b;    
+    --accent: #18181b;        
+}
+
+/* ─── Base Layout ─────────────────────────────────────── */
 body, .container-fluid { 
-    background: var(--bg) !important;
-    color: var(--text) !important;
-    font-family: var(--sans) !important;
+    background: transparent !important; 
+    color: var(--text-muted);
+    font-family: var(--font-sans);
     
-    /* Center the content and prevent it from getting too wide */
-    margin: 0 auto !important;
-    max-width: 900px !important;
-    
-    /* This adds the visual space on the left, right, top, and bottom */
-    padding: 32px 48px !important; 
-    box-sizing: border-box !important;
+    margin: 0 auto;
+    max-width: 900px;
+    padding: 2rem 3rem; 
+    box-sizing: border-box;
 }
 
-/* For mobile responsiveness */
 @media (max-width: 768px) {
     body, .container-fluid {
-        padding: 24px 20px !important;
+        padding: 1.5rem 1.25rem;
     }
 }
 
 /* ─── Typography ──────────────────────────────────────── */
 .nb-markdown {
-    font-family: var(--sans);
     font-weight: 300;
     padding: 1rem 0;
-    line-height: 1.6;
-    color: var(--text);
+    line-height: 1.7;
 }
 
 h1, h2, h3, h4, h5 {
-    color: var(--text-h) !important;
+    font-family: var(--font-serif);
+    color: var(--text-main);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    line-height: 1.2;
 }
 
-ul {
-    font-family: var(--sans);
-    color: var(--text);
-    font-weight: 300;
+ul, ol {
+    line-height: 1.7;
+    margin-bottom: 1rem;
 }
 
 .anchor-link {
-    visibility: hidden;
+    display: none; 
 }
 
 /* ─── Code Blocks ─────────────────────────────────────── */
-pre {
-    font-family: var(--mono) !important;
-    color: var(--text-h) !important;
-    background-color: var(--code-bg) !important;
-    border: 1px solid var(--border) !important;
-    font-size: 13px !important;
+pre, .highlight {
+    font-family: var(--font-mono);
+    color: var(--text-main);
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    font-size: 0.85rem;
     border-radius: 8px;
-    padding: 16px !important;
+    padding: 1rem;
     white-space: pre-wrap;
     overflow-x: auto;
 }
@@ -72,61 +84,75 @@ pre {
 .nb-code {
     display: inline-block;
     width: 100%;
+    margin: 1rem 0;
 }
 
 /* ─── Tables (Pandas DataFrames) ──────────────────────── */
 .notebook-embed div.output_area {
-    overflow-x: auto !important;
-    scrollbar-width: thin !important;
-    scrollbar-color: var(--border) transparent !important;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-subtle) transparent;
 }
 
 table {
-    border-collapse: collapse !important;
-    width: 100% !important;
-    font-family: var(--mono) !important;
-    margin: 16px 0 32px !important;
-    background: transparent !important;
+    border-collapse: collapse;
+    width: 100%;
+    font-family: var(--font-mono);
+    margin: 1.5rem 0 2.5rem;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    overflow: hidden; 
 }
 
 thead tr {
-    border-bottom: 2px solid var(--border) !important;
+    background: var(--bg-base);
+    border-bottom: 1px solid var(--border-subtle);
 }
 
 table th {
-    color: var(--text-h) !important;
-    font-size: 11px !important;
-    font-weight: 500 !important;
-    letter-spacing: 0.1em !important;
-    text-transform: uppercase !important;
-    padding: 12px 24px 12px 0 !important;
-    text-align: left !important;
+    color: var(--text-main);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 1rem;
+    text-align: left;
 }
 
 tbody tr {
-    border-bottom: 1px solid var(--border) !important;
-    transition: background 0.2s ease !important;
+    border-bottom: 1px solid var(--border-subtle);
+    transition: background 0.2s ease;
+}
+
+tbody tr:last-child {
+    border-bottom: none;
 }
 
 tbody tr:hover {
-    background: rgba(255, 255, 255, 0.03) !important;
+    background: var(--bg-base);
 }
 
 tbody tr td {
-    padding: 12px 24px 12px 0 !important;
-    color: var(--text) !important;
-    font-size: 13px !important;
+    padding: 1rem;
+    font-size: 0.85rem;
 }
 
-/* ─── Plots ───────────────────────────────────────────── */
-.nb-plot {
-    background-color: transparent !important; /* Makes dark-text charts readable */
+/* ─── Plots & Images (LOCKED TO LIGHT MODE) ───────────── */
+.nb-plot, img {
+    /* Hardcode a light background so the black chart text is always visible */
+    background-color: #ffffff !important; 
+    
+    /* Give it a subtle border so it doesn't bleed into light mode backgrounds */
+    border: 1px solid #e4e4e7 !important; 
+    
     border-radius: 8px;
-    padding: 16px;
-    margin: 16px 0;
+    padding: 1rem;
+    margin: 1.5rem auto;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    box-sizing: border-box;
 
-    max-width: 100% !important;
-    height: auto !important;
-
-    box-sizing: border-box !important;
+    filter: none !important;
 }

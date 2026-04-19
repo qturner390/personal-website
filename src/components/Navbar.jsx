@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
-import './Navbar.css'
+import './Navbar.css';
 
 const Navbar = () => {
-
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-
     const [theme, setTheme] = useState(() => localStorage.getItem('app-theme') || 'dark');
 
     useEffect(() => {
@@ -15,17 +13,17 @@ const Navbar = () => {
     }, [theme]);
 
     const toggleTheme = () => setTheme(prev => prev === 'dark' ? 'light' : 'dark');
-
     const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
-
     const closeMenu = () => setIsMenuOpen(false);
 
     return (
         <nav className='navbar'>
+            {/* Left Zone: Logo */}
             <div className='navbar-left'>
-                <Link to="/home" className='navbar-name'>QT</Link>
+                <Link to="/home" className='navbar-name' onClick={closeMenu}>QT</Link>
             </div>
 
+            {/* Mobile Hamburger Toggle */}
             <button 
                 className={`mobile-toggle ${isMenuOpen ? 'open' : ''}`} 
                 onClick={toggleMenu}
@@ -36,6 +34,7 @@ const Navbar = () => {
                 <span className="hamburger-line"></span>
             </button>
 
+            {/* Center Zone: Navigation Links */}
             <div className={`navbar-center ${isMenuOpen ? 'mobile-active' : ''}`}>
                 <ul className="nav-list">
                     <li className="nav-item">
@@ -48,16 +47,26 @@ const Navbar = () => {
                         <Link to="/projects" className="nav-link liquid" onClick={closeMenu}>Projects</Link>
                     </li>
                     <li className="nav-item">
-                        <Link to="/resume" className="nav-link liquid" onClick={closeMenu}>Contact Me</Link>
+                        <Link to="/contact" className="nav-link liquid" onClick={closeMenu}>Contact Me</Link>
                     </li>
-                    <li className="nav-item">
-                        <button onClick={toggleTheme} className="theme-toggle-button mobile-theme-btn">
+                    
+                    {/* Mobile-Only Theme Toggle */}
+                    <li className="nav-item mobile-theme-item">
+                        <button onClick={toggleTheme} className="theme-toggle-button">
                             {theme === 'dark' ? 'Light Mode' : 'Dark Mode'}
                         </button>
                     </li>
                 </ul>
-                
             </div>
+
+            <div className="navbar-right">
+                <button onClick={toggleTheme} className="theme-toggle-button desktop-theme-btn">
+                    {theme === 'dark' ? 'Light Mode' : 'Dark Mode'}
+                </button>
+            </div>
+
+            {/* Invisible Right Zone: Keeps the center zone perfectly centered! */}
+            <div className='navbar-right'></div>
         </nav>
     );
 };

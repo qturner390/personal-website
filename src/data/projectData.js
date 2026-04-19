@@ -22,7 +22,7 @@ export const projects = [
     description: "",
     tags: ["Python", "Numerical Methods", "Statistics"],
     type: "notebook+youtube",
-    notebookUrl: "https://SOMEHTING.com",
+    notebookUrl: "https://",
     youtubeId: "Gwsr-TNnUd8",
     gradient: "linear-gradient(135deg, #7301ff 0%, #820360 40%, #045d3c 100%)",
     sections: [

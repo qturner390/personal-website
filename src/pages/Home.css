@@ -1,0 +1,23 @@
+.name-header {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    font-family: var(--font-serif);
+    font-size: 4rem;
+}
+
+.button-link {
+    font-family: var(--font-serif-text);
+    font-size: large;
+}
+
+@media (max-width: 768px) {
+    .name-header {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 468px) {
+    .name-header {
+        font-size: 1rem;
+    }
+}

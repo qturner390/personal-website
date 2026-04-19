@@ -80,20 +80,27 @@ const DetailSection = ({ section, project }) => {
   switch (section.type) {
     case 'notebook':
       const handleIframeLoad = (e) => {
-      const iframeDoc = e.target.contentDocument || e.target.contentWindow.document;
-    
-      if (!iframeDoc) return;
+        const iframeDoc = e.target.contentDocument || e.target.contentWindow.document;
+        if (!iframeDoc) return;
 
-      // 2. Create a new style tag
-      const style = iframeDoc.createElement('style');
-      
-      // 3. Add your CSS overrides here. 
-      // Note: Jupyter's default CSS is very stubborn, so you will likely need !important
-      style.innerHTML = ``;
+        // 1. Grab the current theme from the main website and push it into the iframe
+        const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+        iframeDoc.documentElement.setAttribute('data-theme', currentTheme);
 
-      // 4. Inject it into the iframe's head
-      iframeDoc.head.appendChild(style);
-    };
+        // 2. Set up a listener so that if the user clicks the toggle button AFTER the iframe loads,
+        // the iframe instantly updates to match.
+        const observer = new MutationObserver((mutations) => {
+          mutations.forEach((mutation) => {
+            if (mutation.attributeName === 'data-theme') {
+              const newTheme = document.documentElement.getAttribute('data-theme');
+              iframeDoc.documentElement.setAttribute('data-theme', newTheme);
+            }
+          });
+        });
+
+        // Watch the main website's HTML tag for theme changes
+        observer.observe(document.documentElement, { attributes: true });
+      };
       return (
         <div className="detail-section">
           {section.label && <p className="detail-section-label">{section.label}</p>}
