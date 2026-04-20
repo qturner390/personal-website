@@ -36,7 +36,7 @@ const ProjectCard = ({ project, index, onClick }) => {
     'notebook+youtube': 'Notebook · Video',
     'github+video': 'GitHub · Demo',
     'github': 'GitHub',
-  }[project.type] ?? project.type;
+  }[project.subtitle] ?? project.subtitle;
 
   return (
     <div

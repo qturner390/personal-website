@@ -27,7 +27,7 @@ const ProjectModal = ({ project, onClose }) => {
         {/* Header */}
         <div className="modal-header">
           <div>
-            <p className="modal-type">{project.type?.replace(/\+/g, ' · ')}</p>
+            {project.subtitle && <p className="detail-eyebrow">{project.subtitle}</p>}          
             <h2 className="modal-title">{project.title}</h2>
           </div>
           <button className="modal-close" onClick={onClose} aria-label="Close">✕</button>
@@ -69,6 +69,7 @@ const ProjectModal = ({ project, onClose }) => {
 
 const ModalContent = ({ project }) => {
   switch (project.type) {
+    case 'video':            return <VideoOnlyView project={project}/>;
     case 'notebook+paper':   return <NotebookPaperView project={project} />;
     case 'notebook+youtube': return <NotebookYouTubeView project={project} />;
     case 'github+video':     return <GithubVideoView project={project} />;
@@ -76,6 +77,20 @@ const ModalContent = ({ project }) => {
     default:                 return <GithubView project={project} />;
   }
 };
+
+const VideoOnlyView = ({ project }) => (
+  <div className="modal-embed-wrapper">
+    <p className="embed-label">Demo Preview</p>
+    <video 
+      src={project.videoSrc} 
+      className="modal-video" 
+      autoPlay 
+      loop 
+      muted 
+      playsInline
+    />
+  </div>
+);
 
 const NotebookPaperView = ({ project }) => (
   <div className="modal-split">

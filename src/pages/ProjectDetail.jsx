@@ -33,7 +33,7 @@ const ProjectDetail = () => {
       {/* Hero */}
       <header className="detail-hero">
         <div className="detail-hero-text">
-          <p className="detail-eyebrow">{project.type?.replace(/\+/g, ' · ')}</p>
+          {project.subtitle && <p className="detail-eyebrow">{project.subtitle}</p>}          
           <h1 className="detail-title">{project.title}</h1>
           {project.date && <p className="detail-date">{project.date}</p>}
         </div>
@@ -139,12 +139,18 @@ const DetailSection = ({ section, project }) => {
         <div className="detail-section">
           {section.label && <p className="detail-section-label">{section.label}</p>}
           {section.commentary && <p className="detail-commentary">{section.commentary}</p>}
-          <video
-            src={section.src ?? project.videoSrc}
-            className="detail-video"
-            controls
-            preload="metadata"
-          />
+          {/* We wrap it in your detail-embed-wrapper to keep it styled like the others */}
+          <div className="detail-embed-wrapper">
+            <video
+              src={section.src ?? project.videoSrc}
+              className="detail-video"
+              autoPlay 
+              loop 
+              muted 
+              playsInline
+              // Removed 'controls' and 'preload'
+            />
+          </div>
         </div>
       );
 
