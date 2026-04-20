@@ -66,7 +66,7 @@ const Resume = () => {
             <section className='resume-text-section'>
                 
                 <div className="section-subtitle">
-                    <b>Agentic System for Front-End Development | Python, LangChain, React, AWS</b> <br />
+                    <b><Link to="/Projects/3" className='project-button'>Agentic System for Front-End Development</Link> | Python, LangChain, React, AWS</b> <br />
                     <b>Spring 2025</b>
                 </div>
                 <ul className="resume-list">
